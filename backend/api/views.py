@@ -4,6 +4,6 @@ from .models import UserAccount
 from .serializers import UserAccountSerializer
 
 
-class UserAccount(viewsets.UserAccount):
+class UserAccountSet(viewsets.ModelViewSet):
     queryset = UserAccount.objects.all()
-    serilizer_class = (UserAccountSerializer, )
+    serializer_class = UserAccountSerializer

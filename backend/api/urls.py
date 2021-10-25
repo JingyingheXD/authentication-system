@@ -1,10 +1,10 @@
 from django.urls import path
 from rest_framework import routers
 from django.conf.urls import include
-from .views import UserAccountSerializer
+from .views import UserAccountSet
 
 router = routers.DefaultRouter()
-router.register('users', UserAccountSerializer)
+router.register('users', UserAccountSet)
 
 urlpatterns = [
     path('', include(router.urls)),
