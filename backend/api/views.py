@@ -2,7 +2,8 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from .models import UserAccount
-from .serializers import UserAccountSerializer
+from django.contrib.auth.models import User
+from .serializers import UserAccountSerializer, UserSerializer
 
 
 class UserAccountSet(viewsets.ModelViewSet):
@@ -40,3 +41,8 @@ class UserAccountSet(viewsets.ModelViewSet):
                 response = {'message': 'Account created',
                             'result': serializer.data}
                 return Response(response, status=status.HTTP_200_OK)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
