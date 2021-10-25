@@ -5,6 +5,9 @@ from .models import UserAccount
 from django.contrib.auth.models import User
 from .serializers import UserAccountSerializer, UserSerializer
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 
 class UserAccountSet(viewsets.ModelViewSet):
     queryset = UserAccount.objects.all()
