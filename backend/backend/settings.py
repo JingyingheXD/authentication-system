@@ -39,11 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api',
-    'django_use_email_as_username.apps.DjangoUseEmailAsUsernameConfig',
-    'custom_user.apps.CustomUserConfig',
+    'rest_framework.authtoken',
 ]
 
-AUTH_USER_MODEL = 'custom_user.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
