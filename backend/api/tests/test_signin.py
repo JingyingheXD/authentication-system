@@ -54,7 +54,7 @@ class SignInTest(TestCase):
 
     def test_signin_valid_user(self):
         client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.user_previous),
             content_type='application/json'
         )
@@ -68,7 +68,7 @@ class SignInTest(TestCase):
 
     def test_signin_invalid_signin_user_no_username(self):
         client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.user_previous),
             content_type='application/json'
         )
@@ -82,7 +82,7 @@ class SignInTest(TestCase):
 
     def test_signin_invalid_signin_user_no_password(self):
         client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.user_previous),
             content_type='application/json'
         )
@@ -96,7 +96,7 @@ class SignInTest(TestCase):
 
     def test_signin_invalid_signin_nonexist_username(self):
         client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.user_previous),
             content_type='application/json'
         )
@@ -110,7 +110,7 @@ class SignInTest(TestCase):
 
     def test_signin_invalid_signin_invalid_username(self):
         client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.user_previous),
             content_type='application/json'
         )
@@ -124,7 +124,7 @@ class SignInTest(TestCase):
 
     def test_signin_invalid_signin_wrong_password(self):
         client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.user_previous),
             content_type='application/json'
         )
@@ -138,7 +138,7 @@ class SignInTest(TestCase):
 
     def test_signin_invalid_signin_invalid_password(self):
         client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.user_previous),
             content_type='application/json'
         )

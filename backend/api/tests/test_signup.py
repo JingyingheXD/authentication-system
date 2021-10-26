@@ -10,7 +10,7 @@ from ..serializers import UserSerializer
 client = Client()
 
 
-class SignInTest(TestCase):
+class SignUpTest(TestCase):
     """ Test module for adding a user API  """
 
     def setUp(self):
@@ -78,7 +78,7 @@ class SignInTest(TestCase):
 
     def test_add_valid_user(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.valid_user),
             content_type='application/json'
         )
@@ -86,7 +86,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_no_username(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_no_username),
             content_type='application/json'
         )
@@ -95,7 +95,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_no_password(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_no_password),
             content_type='application/json'
         )
@@ -104,7 +104,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_no_username_password(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_no_username_password),
             content_type='application/json'
         )
@@ -116,7 +116,7 @@ class SignInTest(TestCase):
         user_previous = User.objects.create(
             username='hjy@gmail.com', password='hejingying123')
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_exist_username),
             content_type='application/json'
         )
@@ -125,7 +125,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_invalid_username(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_invalid_username),
             content_type='application/json'
         )
@@ -134,7 +134,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_invalid_password_short(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_invalid_password_short),
             content_type='application/json'
         )
@@ -143,7 +143,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_invalid_password_common(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_invalid_password_common),
             content_type='application/json'
         )
@@ -152,7 +152,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_invalid_password_numeric(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_invalid_password_numeric),
             content_type='application/json'
         )
@@ -161,7 +161,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_invalid_password_short_common(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(self.invalid_user_invalid_password_short_common),
             content_type='application/json'
         )
@@ -170,7 +170,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_invalid_password_short_common_numeric(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(
                 self.invalid_user_invalid_password_short_common_numeric),
             content_type='application/json'
@@ -182,7 +182,7 @@ class SignInTest(TestCase):
         user_previous = User.objects.create(
             username='hjy@gmail.com', password='hejingying123')
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(
                 self.invalid_user_exist_username_invalid_password),
             content_type='application/json'
@@ -193,7 +193,7 @@ class SignInTest(TestCase):
 
     def test_add_invalid_user_invalid_username_invalid_password(self):
         response = client.post(
-            reverse('users-list'),
+            reverse('sign-up-list'),
             data=json.dumps(
                 self.invalid_user_invalid_username_invalid_password),
             content_type='application/json'
