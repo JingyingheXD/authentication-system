@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     credentials: {
       username: "",
@@ -8,10 +8,9 @@ class Login extends Component {
     },
   };
 
-  login = (event) => {
-    // console.log(this.state.credentials);
+  register = (event) => {
     const { username, password } = this.state.credentials;
-    fetch("http://127.0.0.1:8000/auth/", {
+    fetch("http://127.0.0.1:8000/api/sign-up/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -23,22 +22,17 @@ class Login extends Component {
     })
       .then((resp) => resp.json())
       .then((resp) => {
-        // resp = resp.json();
-        // console.log("resp", resp);
-        if (resp["token"]) {
-          alert("Success login!");
-        } else if (resp["non_field_errors"]) {
-          alert("Wrong password");
-        } else if (resp["username"] && resp["password"]) {
-          console.error("username error", resp["username"]);
-          console.error("password error", resp["password"]);
-          alert("Please input username and password!");
-        } else if (resp["username"]) {
-          console.error("username error", resp["username"]);
-          alert("Please input username!");
-        } else if (resp["password"]) {
-          console.error("password error", resp["password"]);
-          alert("Please input password!");
+        if (resp["id"]) {
+          alert("Success register!");
+        } else {
+          if (resp["username"]) {
+            console.error("username error", resp["username"]);
+            alert(resp["username"]);
+          }
+          if (resp["password"]) {
+            console.error("password error", resp["password"]);
+            alert(resp["password"]);
+          }
         }
       })
       .catch((error) => {
@@ -55,7 +49,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h1>Sign in</h1>
+        <h1>Sign up</h1>
 
         <label>
           Username:
@@ -77,10 +71,10 @@ class Login extends Component {
           />
         </label>
         <br />
-        <button onClick={this.login}>Sign in</button>
+        <button onClick={this.register}>Sign up</button>
       </div>
     );
   }
 }
 
-export default Login;
+export default Register;

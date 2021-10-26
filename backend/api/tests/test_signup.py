@@ -28,6 +28,10 @@ class SignUpTest(TestCase):
             'username': 'hjy_new@gmail.com',
             'password': '',
         }
+        self.invalid_user_exist_username_no_password = {
+            'username': 'hjy@gmail.com',
+            'password': '',
+        }
         self.invalid_user_no_username_password = {
             'username': '',
             'password': '',
@@ -100,6 +104,18 @@ class SignUpTest(TestCase):
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('password', response.data)
+
+    def test_add_invalid_user_exist_username_no_password(self):
+        user_previous = User.objects.create(
+            username='hjy@gmail.com', password='hejingying123')
+        response = client.post(
+            reverse('sign-up-list'),
+            data=json.dumps(self.invalid_user_exist_username_no_password),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('username', response.data)
         self.assertIn('password', response.data)
 
     def test_add_invalid_user_no_username_password(self):
