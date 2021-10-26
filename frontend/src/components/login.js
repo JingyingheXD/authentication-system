@@ -78,6 +78,7 @@ class Login extends Component {
         </label>
         <br />
         <button onClick={this.login}>Sign in</button>
+        <a href="../sign-up">Go to Sign Up</a>
       </div>
     );
   }

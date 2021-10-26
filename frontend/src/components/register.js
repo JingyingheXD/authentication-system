@@ -72,6 +72,7 @@ class Register extends Component {
         </label>
         <br />
         <button onClick={this.register}>Sign up</button>
+        <a href="../sign-in">Go to Sign in</a>
       </div>
     );
   }
