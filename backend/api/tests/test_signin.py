@@ -33,6 +33,10 @@ class SignInTest(TestCase):
             'username': 'hjy@gmail.com',
             'password': '',
         }
+        self.invalid_signin_user_no_username_no_password = {
+            'username': '',
+            'password': '',
+        }
 
         """ not blank """
         self.invalid_signin_nonexist_username = {
@@ -92,6 +96,21 @@ class SignInTest(TestCase):
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('password', response.data)
+
+    def test_signin_invalid_signin_user_no_username_no_password(self):
+        client.post(
+            reverse('sign-up-list'),
+            data=json.dumps(self.user_previous),
+            content_type='application/json'
+        )
+        response = client.post(
+            '/auth/',
+            data=json.dumps(self.invalid_signin_user_no_username_no_password),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('username', response.data)
         self.assertIn('password', response.data)
 
     def test_signin_invalid_signin_nonexist_username(self):
