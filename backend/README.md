@@ -1,5 +1,5 @@
 ### 0. API Documentation
-For more information about this api, please read [this file](https://github.com/JingyingheXD/authentication-system/blob/main/backend/api_doc.md).
+For more information about this api, please read [this API Documentation](https://github.com/JingyingheXD/authentication-system/blob/main/backend/api_doc.md).
 
 ### 1. Set up virtual environment
 
