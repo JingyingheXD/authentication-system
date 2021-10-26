@@ -1,3 +1,6 @@
+### 0. API Documentation
+For more information about this api, please read [this file](https://github.com/JingyingheXD/authentication-system/blob/main/backend/api_doc.md).
+
 ### 1. Set up virtual environment
 
 Please set up a virtual env for this project using `python3 -m venv venv`
