@@ -26,11 +26,11 @@ class UserViewSet(viewsets.ModelViewSet):
         raise Http404("not exist")
 
 
-class MovieViewSet():
+class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
-    serializer_class = (MovieSerializer, )
+    serializer_class = MovieSerializer
 
 
-class RatingSerializer():
+class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
-    serializer_class = (RatingSerializer, )
+    serializer_class = RatingSerializer
