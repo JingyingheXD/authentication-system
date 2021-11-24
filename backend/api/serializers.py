@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.authtoken.models import Token
+from .models import Movie, Rating
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -31,3 +32,15 @@ class UserSerializer(serializers.ModelSerializer):
         except ValidationError as exc:
             raise serializers.ValidationError(str(exc))
         return value
+
+
+class MovieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        field = ('id', 'title', 'description')
+
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        field = ('id', 'stars', 'movie', 'user')

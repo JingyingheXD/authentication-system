@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from django.http import Http404
+from .models import Movie, Rating
+from .serializers import MovieSerializer, RatingSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -22,3 +24,13 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def destroy(self, request):
         raise Http404("not exist")
+
+
+class MovieViewSet():
+    queryset = Movie.objects.all()
+    serializer_class = (MovieSerializer, )
+
+
+class RatingSerializer():
+    queryset = Rating.objects.all()
+    serializer_class = (RatingSerializer, )
