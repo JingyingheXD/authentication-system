@@ -1,19 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Login from "./components/login";
 import Register from "./components/register";
 
+// function App() {
+//   return (
+//     <div className="App">
+//       <BrowserRouter>
+//         <Route exact path="/">
+//           <Redirect to="/sign-in"></Redirect>
+//         </Route>
+//         <Route exact path="/sign-in" component={Login} />
+//         <Route exact path="/sign-up" component={Register} />
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+
 function App() {
+  const [movies, setMovies] = useState(["movie 1", "movie 2"]);
+
+  useEffect(() => {}, []);
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Route exact path="/">
-          <Redirect to="/sign-in"></Redirect>
-        </Route>
-        <Route exact path="/sign-in" component={Login} />
-        <Route exact path="/sign-up" component={Register} />
-      </BrowserRouter>
+      <header className="App-header">
+        <h1>Movie Rater</h1>
+      </header>
+      <div className="layout">
+        <div>
+          {movies.map((movie) => {
+            return <h2>{movie}</h2>;
+          })}
+        </div>
+        <div>Movie Details</div>
+      </div>
     </div>
   );
 }

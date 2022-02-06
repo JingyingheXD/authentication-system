@@ -19,4 +19,4 @@ Launch this project using `python manage.py runserver`
 
 ### 5. Unit test
 
-For unit tests, use `python manage.py test api`
+For unit tests, use `python manage.py test api`ddd

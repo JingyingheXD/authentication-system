@@ -1,6 +1,7 @@
-hello.c
-backend/venv/*
-hello/
+backend/venv/
 **/*.pyc
 backend/api/__pycache__/
+backend/api/migrations/
 backend/backend/__pycache__/
+backend/README.md
+**/.vscode/
