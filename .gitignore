@@ -1,0 +1,6 @@
+hello.c
+backend/venv/*
+hello/
+**/*.pyc
+backend/api/__pycache__/
+backend/backend/__pycache__/
