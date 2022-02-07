@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Login from "./components/login";
 import Register from "./components/register";
+import MovieList from "./components/movie-list";
+import MovieDetails from "./components/movie-details";
 
 // function App() {
 //   return (
@@ -19,9 +21,25 @@ import Register from "./components/register";
 // }
 
 function App() {
-  const [movies, setMovies] = useState(["movie 1", "movie 2"]);
+  const [movies, setMovie] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/movies/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Token ebfb149ef3361f9006321dc54a723b485b0b2dee",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((resp) => setMovie(resp))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const movieClicked = (movie) => {
+    setSelectedMovie(movie);
+  };
 
   return (
     <div className="App">
@@ -29,12 +47,8 @@ function App() {
         <h1>Movie Rater</h1>
       </header>
       <div className="layout">
-        <div>
-          {movies.map((movie) => {
-            return <h2>{movie}</h2>;
-          })}
-        </div>
-        <div>Movie Details</div>
+        <MovieList movies={movies} movieClicked={movieClicked} />
+        <MovieDetails movie={selectedMovie} />
       </div>
     </div>
   );
