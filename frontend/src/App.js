@@ -62,7 +62,7 @@ function App() {
           editClicked={editClicked}
         />
         <MovieDetails movie={selectedMovie} updateMovie={loadMovie} />
-        <MovieForm movie={editedMovie} />
+        {editedMovie ? <MovieForm movie={editedMovie} /> : null}
       </div>
     </div>
   );
