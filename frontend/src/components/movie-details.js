@@ -7,11 +7,11 @@ function MovieDetails(props) {
 
   const mov = props.movie;
 
-  const highlightRate = (high) => (evt) => {
+  const highlightRate = (high) => {
     setHighlighted(high);
   };
 
-  const rateClicked = (rate) => (evt) => {
+  const rateClicked = (rate) => {
     fetch(`http://127.0.0.1:8000/api/movies/${mov.id}/rate_movie/`, {
       method: "POST",
       headers: {
@@ -60,9 +60,9 @@ function MovieDetails(props) {
                   key={i}
                   icon={faStar}
                   className={highlighted > i - 1 ? "purple" : ""}
-                  onMouseEnter={highlightRate(i)}
-                  onMouseLeave={highlightRate(-1)}
-                  onClick={rateClicked(i)}
+                  onMouseEnter={(evt) => highlightRate(i)}
+                  onMouseLeave={(evt) => highlightRate(-1)}
+                  onClick={(evt) => rateClicked(i)}
                 />
               );
             })}
